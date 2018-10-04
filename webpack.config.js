@@ -72,8 +72,6 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   externals : {
-    firebase : 'firebase',
-    d3       : 'd3'
   },
 	devtool: 'source-map',
 }
