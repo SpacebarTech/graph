@@ -11,12 +11,7 @@
 
 <script>
 import * as d3 from "d3";
-import * as firebase from 'firebase/app';
-import 'firebase/database';
-
-const FirebaseKey = () => {
-  return firebase.database().ref( '/' ).push().key;
-};
+import uuid from 'uuid/v5';
 
 const CorrectSafariTextOffset = ( y, dominantBaseline ) => {
 
@@ -73,7 +68,7 @@ export default {
 	},
 
 	data : () => ( {
-		id : FirebaseKey(),
+		id : uuid(),
 
 		scrollState : 'neither',
 
