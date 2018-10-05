@@ -11,7 +11,8 @@
 
 <script>
 import * as d3 from "d3";
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/database';
 
 const FirebaseKey = () => {
   return firebase.database().ref( '/' ).push().key;
