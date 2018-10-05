@@ -11,7 +11,7 @@
 
 <script>
 import * as d3 from "d3";
-import uuid from 'uuid/v5';
+import uuid from 'uuid/v1';
 
 const CorrectSafariTextOffset = ( y, dominantBaseline ) => {
 
