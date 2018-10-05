@@ -103,7 +103,7 @@ export default {
 	},
 
 	data : () => ( {
-		id : uuid(),
+		id : `-${uuid()}`,
 
 		scrollState : 'neither',
 

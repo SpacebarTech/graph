@@ -198,7 +198,7 @@ exports.default = {
 
 	data: function data() {
 		return {
-			id: (0, _v2.default)(),
+			id: '-' + (0, _v2.default)(),
 
 			scrollState: 'neither',
 
