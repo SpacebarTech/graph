@@ -108,6 +108,41 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 
+var Browser = function () {
+	// Opera 8.0+
+	var isOpera = !!window.opr && !!opr.addons || !!window.opera || window.navigator.userAgent.indexOf(' OPR/') >= 0;
+
+	// Firefox 1.0+
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+
+	// Chrome 1+
+	var isChrome = !!window.chrome && !!window.chrome.webstore || /(iPhone).+(CriOS).+(Safari)/g.test(window.navigator.userAgent);
+
+	// Safari 3.0+ "[object HTMLElementConstructor]"
+	var isSafari = /(iPhone).+(Version).+(Safari)/g.test(window.navigator.userAgent) && !isChrome;
+	var isDesktopSafari = /(Macintosh).+(AppleWebKit).+(Safari)/g.test(window.navigator.userAgent) && !isChrome;
+
+	// Internet Explorer 6-11
+	var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+	// Edge 20+
+	var isEdge = !isIE && !!window.StyleMedia;
+
+	// Blink engine detection
+	var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+	return {
+		isOpera: isOpera,
+		isFirefox: isFirefox,
+		isSafari: isSafari,
+		isDesktopSafari: isDesktopSafari,
+		isIE: isIE,
+		isEdge: isEdge,
+		isChrome: isChrome,
+		isBlink: isBlink
+	};
+}();
+
 var CorrectSafariTextOffset = function CorrectSafariTextOffset(y, dominantBaseline) {
 
 	if (Browser && (Browser.isSafari || Browser.isDesktopSafari)) {

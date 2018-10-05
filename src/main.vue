@@ -13,6 +13,41 @@
 import * as d3 from "d3";
 import uuid from 'uuid/v1';
 
+const Browser = ( function () {
+	// Opera 8.0+
+	const isOpera = ( !!window.opr && !!opr.addons ) || !!window.opera || window.navigator.userAgent.indexOf( ' OPR/' ) >= 0;
+
+	// Firefox 1.0+
+	const isFirefox = typeof InstallTrigger !== 'undefined';
+
+	// Chrome 1+
+	const isChrome = ( !!window.chrome && !!window.chrome.webstore ) || ( /(iPhone).+(CriOS).+(Safari)/g ).test( window.navigator.userAgent );
+
+	// Safari 3.0+ "[object HTMLElementConstructor]"
+	const isSafari        = ( /(iPhone).+(Version).+(Safari)/g ).test( window.navigator.userAgent ) && !isChrome;
+	const isDesktopSafari = ( /(Macintosh).+(AppleWebKit).+(Safari)/g ).test( window.navigator.userAgent ) && !isChrome;
+
+	// Internet Explorer 6-11
+	const isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+	// Edge 20+
+	const isEdge = !isIE && !!window.StyleMedia;
+
+	// Blink engine detection
+	const isBlink = ( isChrome || isOpera ) && !!window.CSS;
+
+	return {
+		isOpera,
+		isFirefox,
+		isSafari,
+		isDesktopSafari,
+		isIE,
+		isEdge,
+		isChrome,
+		isBlink,
+	};
+}() );
+
 const CorrectSafariTextOffset = ( y, dominantBaseline ) => {
 
 	if ( Browser && ( Browser.isSafari || Browser.isDesktopSafari ) ) {
